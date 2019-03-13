@@ -25,6 +25,7 @@ from calibre.constants import (
 from calibre.utils.filenames import atomic_rename
 from calibre.utils.terminal import ANSIStream
 from duktape import Context, JSError, to_python
+from polyglot.builtins import range
 
 COMPILER_PATH = 'rapydscript/compiler.js.xz'
 special_title = '__webengine_messages_pending__'
@@ -415,7 +416,7 @@ class Repl(Thread):
                     import traceback
                     traceback.print_exc()
 
-                for i in xrange(100):
+                for i in range(100):
                     # Do this many times to ensure we dont deadlock
                     self.from_repl.put(None)
 
